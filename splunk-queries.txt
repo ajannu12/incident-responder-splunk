@@ -1,0 +1,7 @@
+# Sample Splunk Queries
+
+# 1. Failed login attempts
+index=main sourcetype="auth" action="failure" | stats count by src_ip
+
+# 2. Unusual outbound traffic
+index=network sourcetype="firewall" dest_port!=80 dest_port!=443 | stats count by dest_ip
